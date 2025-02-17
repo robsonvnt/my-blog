@@ -7,6 +7,8 @@ tags: ["Precarização do Trabalho", "Tecnologia"]
 categories: ["Tecnologia e Sociedade"]
 ---
 
+![Descrição da Imagem](/posts/2023/o-privilegio-da-servidao/privilegio_servidao-1.jpeg)
+
 Recentemente, em uma conversa com amigos sobre a precarização do
 trabalho, discutimos o papel crescente das plataformas digitais. Um
 episódio relatado por uma amiga chamou minha atenção: ela havia

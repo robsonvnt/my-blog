@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 footer {
   display: flex;
   align-items: center;
-  border-top: 0.4rem dotted var(--bordercl);
+  border-top: 0.3rem dotted;
   padding: 2rem 0rem;
   margin-top: 2rem;
 }
