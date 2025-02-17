@@ -1,8 +1,11 @@
-+++
-date = '2023-10-17'
-draft = false
-title = 'Aplicativos e a Precarização: reflexões sobre a possibilidade de atuação da comunidade tech'
-+++
+---
+date: '2023-10-17'
+draft: false
+title: 'Aplicativos e a Precarização: reflexões sobre a possibilidade de atuação da comunidade tech'
+autor: 'Robson Ventura'
+tags: ["Capitalismo", "Neoliberalismo", "Tecnologia", "Big Techs", "Precarização do Trabalho"]
+categories: ["Tecnologia e Sociedade"]
+---
 
 ![](/posts/2023/aplicativos-precarizacao-e-o-que-a-comunidade-tech-pode-fazer-reflexoes/entregadores-protestando.png)
 
