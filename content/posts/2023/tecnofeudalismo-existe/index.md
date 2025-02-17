@@ -1,7 +1,7 @@
 ---
 date: '2023-08-30'
 draft: false
-title: 'Tecnofeudalismo existe?'
+title: '`Tecnofeudalismo existe?`'
 autor: 'Robson Ventura'
 tags: ["Capitalismo", "Tecnologia", "Big Techs"]
 categories: ["Tecnologia e Sociedade"]
