@@ -3,7 +3,7 @@ date: '2024-08-30'
 draft: false
 title: 'Os desafios da Soberania Digital com a hegemonia da austeridade'
 autor: 'Robson Ventura'
-tags: ["Capitalismo", "Neoliberalismo", "Tecnologia", "Big Techs"]
+tags: ["Neoliberalismo", "Tecnologia", "Big Techs", "Soberania"]
 categories: ["Política", "Tecnologia e Sociedade"]
 ---
 
