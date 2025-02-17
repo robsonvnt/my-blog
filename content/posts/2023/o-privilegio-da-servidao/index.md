@@ -28,7 +28,7 @@ britânico previu que até 2025, um terço dos empregos serão intermediados
 por plataformas digitais -- e esta estimativa foi feita antes da
 pandemia, que possivelmente acelerou essa tendência.
 
-### **A Precarização Disfarçada**
+### A Precarização Disfarçada
 
 Embora muitas destas plataformas se vendam como uma oportunidade de
 renda complementar dentro da **"Gig Economy"** (Economia dos Bicos),
@@ -39,7 +39,7 @@ salário decente. Alguns aplicativos sugerem ganhos mensais
 significativos, mas omitindo despesas e períodos de espera entre os
 trabalhos.
 
-### **O Risco nas Costas do Trabalhador**
+### O Risco nas Costas do Trabalhador
 
 A "plataformização" do trabalho, além de precarizar, transfere quase
 todos os riscos ao trabalhador. Direitos assegurados pela CLT são
@@ -48,7 +48,7 @@ precisam adquirir e manter seus veículos, arcar com combustível e, em
 caso de acidentes, não apenas arcam com os custos, como também podem
 perder sua fonte de renda.
 
-### **O Caminho para a Regulamentação**
+### O Caminho para a Regulamentação
 
 Embora ainda estejamos distantes de uma regulamentação adequada, devido
 ao forte lobby das plataformas, iniciativas como o **AppJusto** e o
