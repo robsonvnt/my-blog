@@ -10,8 +10,19 @@
     {{- end -}}
   </div>
   <div class="footer-info">
-    {{ dateFormat "2006" now }} {{ with .Site.Copyright }} {{ . }} | {{ end }} <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+    &copy; {{ dateFormat "2006" now }} <strong>Robson Ventura</strong>
+
+    <p style="margin-bottom: 5px;"><strong>Contatos</strong></p>
+    <ul style="margin-top: 0px !important;">
+      <li><strong>Email:</strong> <a href="mailto:contato@robsonvnt.me">contato@robsonvnt.me</a></li>
+      <li><strong>Twitter/X:</strong> <a href="https://twitter.com/robsonvnt">@robsonvnt</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/robsonventura/">robsonventura</a></li>
+      </ul>
+
+    <p>Este site é possível graças a projetos <strong>open-source</strong>, incluindo
+      <a href="https://gohugo.io" target="_blank">Hugo</a>,
+      <a href="https://github.com/athul/archie" target="_blank">Archie Theme</a> e entre outros.
+    </p>
   </div>
 </footer>
 {{ if not hugo.IsServer }}

@@ -26,3 +26,11 @@ title = 'Robson Ventura'
     name = "Categorias"
     url = "/categories/"
     title = ""
+  [[menu.main]]
+    weight = 4
+    identifier = "about"
+    pre = ""
+    post = ""
+    name = "Sobre Mim"
+    url = "/about/"
+    title = ""

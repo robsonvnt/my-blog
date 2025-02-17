@@ -53,6 +53,14 @@ blockquote {
   color: #535353;
 }
 
+section.list-item {
+  margin-bottom: 3em;
+}
+
+a.readmore {
+  all: revert !important;
+}
+
 ul.posts {
   list-style: none;
   padding-left: 2ch;
@@ -147,7 +155,7 @@ header .main {
 }
 h1, h2, h3, h4, h5, h6 {
 /*  font-size: 1.2rem;*/
-  margin-top: 2em;
+/*  margin-top: 3em;*/
 }
 
 /*h1::before { color: var(--maincolor); content: '# '; }*/
@@ -193,7 +201,7 @@ footer {
   align-items: center;
   border-top: 0.3rem dotted;
   padding: 2rem 0rem;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 .soc {
   display: flex;
