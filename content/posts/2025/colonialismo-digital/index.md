@@ -24,7 +24,7 @@ a solidariedade e a criação de novos diálogos, também gerou bolhas
 transnacionais que dificultam a construção de consensos sobre questões
 globais.
 
-### **O Fetichismo da Tecnologia**
+### O Fetichismo da Tecnologia
 
 No livro, Deivison Faustino aborda o conceito de **fetiche da
 tecnologia**, que é um ponto central na análise das dinâmicas sociais e
@@ -66,7 +66,7 @@ entender como a tecnologia, longe de ser neutra, é um reflexo e um
 reforço das dinâmicas de poder e desigualdade que governam a sociedade
 moderna.
 
-## **Polarização das Leitura sobre o Período**
+## Polarização das Leitura sobre o Período
 
 **De um lado, aqueles que defendem que Marx está ultrapassado:** Neste
 novo modelo de sociedade informacional, esses pensadores ignoram o papel
@@ -84,7 +84,7 @@ Eles não viram as duas grandes guerras europeias e as transformações
 geradas pela tecnologia informacional como parte de uma evolução do
 capitalismo.
 
-### **Risco Eurocêntrico em uma Análise Politicista ou Economicista**
+### Risco Eurocêntrico em uma Análise Politicista ou Economicista
 
 **Politicista:** A redução das relações sociais e econômicas apenas à
 esfera política da sociedade ignora os fatores econômicos que também
@@ -104,7 +104,7 @@ relações de poder, incluindo as questões coloniais, raciais,
 imperialistas e de dependência, que não podem ser desconsideradas em uma
 análise completa das dinâmicas sociais e econômicas atuais.
 
-## **Capitalismo, Colonialismo e Racismo**
+## Capitalismo, Colonialismo e Racismo
 
 No livro, Deivison Faustino aborda a relação entre capitalismo,
 colonialismo e racismo. Deixa claro que **não há capitalismo sem
@@ -142,7 +142,7 @@ colonialismo e racismo é a base para entendermos as desigualdades que
 ainda persistem hoje, e mostra como essas forças continuam a se
 alimentar mutuamente na sociedade até os dias atuais.
 
-## **Imperialismo: Um velho conhecido**
+## Imperialismo: Um velho conhecido
 
 O imperialismo, na análise de Lenin, representa o estágio superior do
 capitalismo, caracterizado pela formação de grandes monopólios e pela
@@ -179,7 +179,7 @@ evolução, ainda está presente nas dinâmicas de poder e exploração que
 caracterizam o capitalismo moderno, e como as teorias que justificavam
 sua prática ainda influenciam as estruturas sociais atuais.
 
-## **Neocolonialismo e o Neocolonialismo tardio: O Celeiro do colonialismo digital**
+## Neocolonialismo e o Neocolonialismo tardio: O Celeiro do colonialismo digital
 
 No livro, Deivison discute como o **neocolonialismo** e o
 **neocolonialismo tardio** são responsáveis por perpetuar uma dinâmica
@@ -237,7 +237,7 @@ nas relações contemporâneas, as potências centrais continuam a explorar
 as periferias, mantendo a estrutura de dominação do antigo imperialismo,
 agora adaptada às novas formas de economia e política global.
 
-### **Conclusão**
+### Conclusão
 
 A reflexão proposta por Deivison Faustino nos leva a uma análise mais
 profunda da tecnologia, não como uma ferramenta neutra, mas como um
