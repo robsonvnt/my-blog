@@ -7,8 +7,6 @@ tags: ["Capitalismo", "Tecnologia", "Big Techs", "Precarização do Trabalho"]
 categories: ["Tecnologia e Sociedade"]
 ---
 
-![](img.png)
-
 Nos últimos anos, minha visão de mundo mudou radicalmente, em grande
 parte devido à minha atuação no mercado de tecnologia. Antes, eu
 acreditava que esse setor era diferente, mas percebi que a dinâmica de
