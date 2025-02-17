@@ -280,11 +280,10 @@ time {
   content: "🏷 ";
 }
 .tags a {
-  border-bottom: 3px solid var(--maincolor); 
+/*  border-bottom: 3px solid var(--maincolor); */
 }
 .tags a:hover {
-  color: white;
-  background-color: var(--hovercolor); 
+  border-bottom: 2px solid var(--maincolor); 
 }
 svg {
   max-height: 15px;

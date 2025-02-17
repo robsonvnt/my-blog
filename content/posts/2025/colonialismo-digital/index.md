@@ -1,7 +1,10 @@
 ---
-date: '2025-02-17T16:14:51-03:00'
+date: '2025-02-10'
 draft: true
 title: 'Colonialismo Digital'
+autor: 'Robson Ventura'
+tags: ["Colonialismo", "Tecnologia", "mperialismo"]
+categories: ["Tecnologia e Sociedade"]
 ---
 
 Recentemente, participei de um grupo de estudos sobre o livro
