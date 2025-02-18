@@ -15,7 +15,7 @@
 		{{ $size := (cond (eq $biggest $smallest) $min $size) }}
 		<li>
 			<a style="font-size: {{ $size }}rem;" href="{{ $.Site.LanguagePrefix | absURL }}/{{ $data.Plural }}/{{ $value.Name | urlize }}/">
-				{{ $data.Plural }} --- {{ $value.Name }}
+				{{ $value.Name }}
 			</a>
 
 		</li>
