@@ -1,6 +1,6 @@
 ---
 date: '2025-02-10'
-draft: true
+draft: false
 title: 'Colonialismo Digital'
 autor: 'Robson Ventura'
 tags: ["Colonialismo", "Tecnologia", "imperialismo"]
