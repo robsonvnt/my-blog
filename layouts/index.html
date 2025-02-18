@@ -5,6 +5,22 @@
 		<div class="content">
 			{{ partial "head.html" . }}
 			
+
+
+			<!-- Perfil do Proprietário -->
+			<div class="profile">
+
+				<!--<img src="/profile.png" alt="Profile Picture" class="profile-picture">-->
+				<!--<p class="profile-description">Explorando a interseção entre tecnologia, trabalho e movimentos sociais: reflexões, experiências e ações para um futuro mais justo</p>-->
+
+				{{- if isset .Site.Params "profileimage" -}}
+					<img src="{{ .Site.Params.profileImage }}" alt="Profile Picture" class="profile-picture">
+				{{- end -}}
+				{{- if isset .Site.Params "profiledescription" -}}
+					<p class="profile-description">{{ .Site.Params.profileDescription | .Page.RenderString }}</p>
+				{{- end -}}
+			</div>
+
 			<main class="list">
 				<div class="site-description">
 					{{- if isset .Site.Params "subtitle" -}}

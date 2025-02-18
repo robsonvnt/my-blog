@@ -411,3 +411,25 @@ table td {
   stroke-linejoin: round;
   fill: none;
 }
+
+/* Profile
+ */
+.profile {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-description {
+    max-width: 60%; /* Define a largura máxima para evitar que o texto fique muito largo */
+    margin: 10px auto; /* Centraliza horizontalmente */
+    font-size: 1.2em; /* Ajusta o tamanho da fonte */
+    color: #555;
+    line-height: 1.4; /* Melhora a legibilidade */
+}
