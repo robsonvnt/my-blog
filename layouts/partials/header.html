@@ -26,23 +26,6 @@
 	{{ $style := resources.Get "css/main.css" | fingerprint }}
 	<link rel="stylesheet" type="text/css" media="screen" href="{{ $style.Permalink }}" />
 
-	<!-- Custom CSS style get applied last -->
-	{{- if isset .Site.Params "customcss" }}
-		{{ range .Site.Params.customCSS }}
-		{{ $customstyle := resources.Get . | fingerprint }}
-		<link rel="stylesheet" type="text/css" href="{{ $customstyle.Permalink }}">
-		{{ end }}
-	{{- end -}}
-	{{- range .Site.Params.customJS }}
-	{{- if or (hasPrefix . "http://") (hasPrefix . "https://") }}
-	<script src="{{ . }}"></script>
-	{{- else if (hasPrefix . "<script")}}
-    {{ .| safeHTML }}
-	{{- else }}
-	<script src="{{ absURL . }}"></script>
-	{{- end }}
-	{{- end }}
-
 
 	<!-- Favicon padrão -->
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
