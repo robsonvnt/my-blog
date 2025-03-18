@@ -1,5 +1,4 @@
 ---
-date: '2024-08-30'
 draft: false
 title: 'Sobre Mim'
 ---

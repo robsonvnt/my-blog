@@ -1,5 +1,5 @@
 ---
-date: '2024-08-30'
+date: '2024-11-19'
 draft: false
 title: 'Os desafios da Soberania Digital com a hegemonia da austeridade'
 autor: 'Robson Ventura'

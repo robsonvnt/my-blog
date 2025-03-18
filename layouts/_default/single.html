@@ -6,7 +6,9 @@
       <div class="post-content">
         <div class="title">
           <h1 class="title">{{ .Title }}</h1>
+          {{- if .Date -}}
           <div class="meta">Posted on {{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+          {{ end }}
         </div>
         {{ if isset .Params "tldr" }}
         <div class="tldr">
