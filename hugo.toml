@@ -3,7 +3,7 @@ languageCode = 'pt-br'
 title = 'Robson Ventura'
 
 [params]
-  profileImage = "/perfil-l.jpeg" # Caminho para a imagem de perfil
+  profileImage = "/profile-2.jpg" # Caminho para a imagem de perfil
   profileDescription = "Explorando a interseção entre tecnologia, trabalho e movimentos sociais: reflexões, experiências e ações para um futuro mais justo"
 
 
