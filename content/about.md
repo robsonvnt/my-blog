@@ -1,6 +1,7 @@
 ---
 draft: false
 title: 'Sobre Mim'
+layout: about
 ---
 
 Meu nome é **Robson Ventura** e trabalho com desenvolvimento de software há mais de **15 anos**. Minha trajetória profissional está fortemente conectada ao **mercado de startups e empreendedorismo**, onde tive a oportunidade de ser um dos fundadores da **Gupy** e atuar na liderança da área de **tecnologia / inovação**.

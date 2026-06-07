@@ -1,23 +1,37 @@
 #baseURL = 'https://robsonvnt.me/'
-languageCode = 'pt-br'
+locale = 'pt-br'
 title = 'Robson Ventura'
 
 [params]
-  profileImage = "/profile-2.jpg" # Caminho para a imagem de perfil
-  profileDescription = "Explorando a interseção entre tecnologia, trabalho e movimentos sociais: reflexões, experiências e ações para um futuro mais justo"
+  wordmark = "robsonvnt"
+  handle = "robsonvnt"
+  fullName = "Robson Ventura Rodrigues"
+  profileImage = "/profile-2.jpg"
+  profileDescription = "Explorando a interseção entre tecnologia, trabalho e movimentos sociais — reflexões, experiências e ações para um futuro mais justo."
+  mainSections = ["posts"]
 
+  [[params.contacts]]
+    name = "Email"
+    url = "mailto:contato@robsonvnt.me"
+
+  [[params.contacts]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/robsonventura/"
+
+  [[params.contacts]]
+    name = "Twitter/X"
+    url = "https://twitter.com/robsonvnt"
+
+  [[params.contacts]]
+    name = "RSS"
+    url = "/index.xml"
 
 [menu]
   [[menu.main]]
     weight = 1
-    identifier = "home"
-    name = "Home"
-    url = "/"
-  [[menu.main]]
-    weight = 1
     identifier = "posts"
     name = "Posts"
-    url = "/posts/"
+    url = "/"
   [[menu.main]]
     weight = 2
     identifier = "tags"
@@ -25,17 +39,6 @@ title = 'Robson Ventura'
     url = "/tags/"
   [[menu.main]]
     weight = 3
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categorias"
-    url = "/categories/"
-    title = ""
-  [[menu.main]]
-    weight = 4
     identifier = "about"
-    pre = ""
-    post = ""
-    name = "Sobre Mim"
+    name = "Sobre"
     url = "/about/"
-    title = ""

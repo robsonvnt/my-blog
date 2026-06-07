@@ -1,0 +1,11 @@
+<header class="site-header">
+  <a class="wordmark" href="{{ "/" | relLangURL }}">
+    {{ .Site.Params.wordmark | default "robsonvnt" }}<span class="wdot">.</span>
+  </a>
+  <nav class="site-nav" aria-label="Principal">
+    <a class="nav-link{{ if .IsHome }} is-active{{ end }}" href="{{ "/" | relLangURL }}">Posts</a>
+    <a class="nav-link{{ if eq .Section "tags" }} is-active{{ end }}" href="{{ "/tags/" | relLangURL }}">Tags</a>
+    <a class="nav-link{{ if eq .Layout "about" }} is-active{{ end }}" href="{{ "/about/" | relLangURL }}">Sobre</a>
+    <button type="button" class="theme-btn" id="theme-toggle" aria-label="Alternar tema"></button>
+  </nav>
+</header>

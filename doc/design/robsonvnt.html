@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>robsonvnt.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('rvnt-theme')||'paper';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ── Tokens ── */
+    :root {
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-read:    'Source Serif 4', Georgia, serif;
+      --font-ui:      'Inter', system-ui, sans-serif;
+      --ease-soft: cubic-bezier(0.32, 0.72, 0.32, 1);
+      --t-fast: 120ms;
+      --t-base: 200ms;
+    }
+
+    :root, [data-theme="paper"] {
+      --bg:          #f4f4f1;
+      --surface:     #fbfbf8;
+      --surface-2:   #ebebe5;
+      --rule:        #dcdcd5;
+      --rule-soft:   #e5e5de;
+      --ink:         #2a2a26;
+      --ink-2:       #555550;
+      --ink-3:       #8a8a82;
+      --ink-4:       #b8b8b0;
+      --accent:      #6a7a5c;
+      --accent-deep: #4a5a3e;
+      --accent-soft: #c8d2bc;
+      --ink-blue:    #4a5d75;
+      color-scheme: light;
+    }
+
+    [data-theme="ink"] {
+      --bg:          #181614;
+      --surface:     #201d1a;
+      --surface-2:   #2a2520;
+      --rule:        #363028;
+      --rule-soft:   #2d2820;
+      --ink:         #ede3d2;
+      --ink-2:       #c5b89e;
+      --ink-3:       #90816c;
+      --ink-4:       #655848;
+      --accent:      #c4855a;
+      --accent-deep: #e0a070;
+      --accent-soft: #5c3820;
+      --ink-blue:    #8a9db4;
+      color-scheme: dark;
+    }
+
+    /* ── Base ── */
+    html { background: var(--bg); scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Shell ── */
+    .app {
+      max-width: 880px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--surface);
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+    }
+
+    /* ── Header ── */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      line-height: 1;
+      font-variation-settings: "opsz" 22;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .wordmark:hover { color: var(--ink); }
+    .wdot { color: var(--accent); font-style: normal; }
+
+    .site-nav { display: flex; align-items: center; gap: 1px; }
+
+    .nav-link {
+      font-size: 13px;
+      color: var(--ink-3);
+      background: none;
+      border: none;
+      padding: 5px 9px;
+      border-radius: 6px;
+      position: relative;
+      transition: color var(--t-fast);
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.is-active { color: var(--ink); }
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 9px;
+      right: 9px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      color: var(--ink-3);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      margin-left: 8px;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .theme-btn:hover { background: var(--surface-2); color: var(--ink); }
+    .theme-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Bio band ── */
+    .bio-band {
+      padding: 28px 32px 26px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .bio-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--ink-2);
+      line-height: 1.55;
+      margin: 0;
+      font-variation-settings: "opsz" 18;
+      max-width: 500px;
+    }
+
+    /* ── Post list ── */
+    .post-list { list-style: none; margin: 0; padding: 0; }
+
+    .post-item {
+      padding: 28px 32px 26px;
+      border-bottom: 1px solid var(--rule);
+      animation: fadeUp 0.2s var(--ease-soft) both;
+    }
+
+    .post-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 9px;
+    }
+    .post-date {
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.025em;
+    }
+    .meta-sep { color: var(--rule); user-select: none; font-size: 11px; }
+    .tag-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font-ui);
+      transition: color var(--t-fast);
+    }
+    .tag-eyebrow:hover { color: var(--accent-deep); }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0 0 10px;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+      display: block;
+      width: 100%;
+      font-variation-settings: "opsz" 26;
+      text-wrap: balance;
+      transition: color var(--t-fast);
+    }
+    .post-title:hover { color: var(--accent-deep); }
+
+    .post-excerpt {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-2);
+      margin: 0 0 14px;
+      max-width: 660px;
+      text-wrap: pretty;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--ink-3);
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font-ui);
+      transition: color var(--t-fast);
+    }
+    .read-more:hover { color: var(--accent); }
+    .rm-arr { display: inline-block; transition: transform var(--t-fast); }
+    .read-more:hover .rm-arr { transform: translateX(3px); }
+
+    /* ── Reading progress ── */
+    .reading-progress {
+      position: sticky;
+      top: 53px;
+      height: 2px;
+      z-index: 15;
+      background: transparent;
+    }
+    .reading-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.08s linear;
+    }
+
+    /* ── Article ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ink-3);
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 13px 32px;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-ui);
+      transition: color var(--t-fast);
+    }
+    .back-link:hover { color: var(--ink); }
+    .back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .article-header-area {
+      padding: 34px 32px 28px;
+      border-bottom: 1px solid var(--rule);
+      animation: fadeUp 0.2s var(--ease-soft);
+    }
+    .article-eyebrow {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 0 0 16px;
+      text-wrap: balance;
+      font-variation-settings: "opsz" 36;
+    }
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+
+    .article-body {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 38px 32px 80px;
+      font-family: var(--font-read);
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--ink);
+      font-variation-settings: "opsz" 16;
+      animation: fadeUp 0.2s var(--ease-soft);
+    }
+    .article-body p { margin: 0 0 1.2em; text-wrap: pretty; }
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 1.8em 0 0.5em;
+      font-variation-settings: "opsz" 24;
+    }
+    .article-body blockquote {
+      margin: 1.4em 0;
+      padding: 0.2em 0 0.2em 1.2em;
+      border-left: 2px solid var(--accent-soft);
+      color: var(--ink-2);
+      font-style: italic;
+    }
+    .article-body a { color: var(--ink-blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    .original-link-bar {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 32px 48px;
+      border-top: 1px solid var(--rule-soft);
+    }
+    .original-link {
+      font-size: 13px;
+      color: var(--ink-3);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      transition: color var(--t-fast);
+      display: inline-block;
+      padding-top: 16px;
+    }
+    .original-link:hover { color: var(--accent); }
+
+    /* ── Tags page ── */
+    .page-area {
+      padding: 32px;
+      animation: fadeUp 0.2s var(--ease-soft);
+    }
+    .page-heading {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 24px;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 28;
+    }
+    .tag-list { list-style: none; margin: 0; padding: 0; }
+    .tag-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+      width: 100%;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      text-align: left;
+      color: var(--ink);
+      transition: color var(--t-fast);
+    }
+    .tag-row:hover { color: var(--accent); }
+    .tag-row-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      font-variation-settings: "opsz" 20;
+    }
+    .tag-row-count {
+      font-size: 12px;
+      color: var(--ink-3);
+      font-family: var(--font-ui);
+    }
+
+    /* ── About page ── */
+    .about-area {
+      padding: 40px 32px 80px;
+      max-width: 560px;
+      animation: fadeUp 0.2s var(--ease-soft);
+    }
+    .about-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .about-avatar svg { width: 32px; height: 32px; stroke: var(--ink-3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .about-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 28;
+    }
+    .about-handle {
+      font-size: 13px;
+      color: var(--ink-3);
+      font-family: var(--font-ui);
+      margin: 0 0 24px;
+    }
+    .about-bio {
+      font-family: var(--font-read);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink-2);
+      font-variation-settings: "opsz" 14;
+    }
+    .about-bio p { margin: 0 0 1em; text-wrap: pretty; }
+    .about-divider { border: none; border-top: 1px solid var(--rule); margin: 24px 0; }
+    .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .contact-link {
+      font-size: 13px;
+      color: var(--ink-3);
+      text-decoration: none;
+      padding: 7px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      font-family: var(--font-ui);
+      transition: border-color var(--t-fast), color var(--t-fast);
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .site-header { padding: 13px 20px; }
+      .bio-band, .post-item, .page-area, .article-header-area { padding-left: 20px; padding-right: 20px; }
+      .about-area { padding-left: 20px; padding-right: 20px; }
+      .back-link { padding-left: 20px; padding-right: 20px; }
+      .article-body, .original-link-bar { padding-left: 20px; padding-right: 20px; }
+      .post-title { font-size: 21px; }
+      .article-title { font-size: 26px; }
+      .nav-link { padding: 5px 6px; font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .post-item, .page-area, .about-area, .article-header-area, .article-body { animation: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ── DATA ── */
+const POSTS = [
+  {
+    id: 1,
+    title: "Colonialismo Digital",
+    date: "10 fev. 2025",
+    tags: ["Tecnologia", "Política"],
+    readTime: "8 min",
+    excerpt: "Recentemente, participei de um grupo de estudos sobre o livro Colonialismo Digital, e decidi compartilhar por aqui alguns dos acúmulos ao longo da leitura. Acabamos de concluir a primeira parte, intitulada \"O Dilema das Redes e a Atualidade do Colonialismo\", e ela trouxe reflexões sobre a relação entre tecnologia, poder e capitalismo no mundo digital em que vivemos.",
+    body: [
+      "Recentemente, participei de um grupo de estudos sobre o livro Colonialismo Digital, e decidi compartilhar por aqui alguns dos acúmulos ao longo da leitura. Acabamos de concluir a primeira parte, intitulada \"O Dilema das Redes e a Atualidade do Colonialismo\", e ela trouxe reflexões sobre a relação entre tecnologia, poder e capitalismo no mundo digital em que vivemos.",
+      "Em um período em que a tecnologia se apresenta como a grande força transformadora da sociedade, a verdadeira questão é: estamos realmente no controle dessa revolução digital, ou estamos, de fato, sendo colonizados por ela? O autor argumenta que as grandes plataformas digitais operam segundo uma lógica extrativista semelhante ao colonialismo histórico: extraem dados, atenção e trabalho das populações periféricas para enriquecer centros de poder concentrados no Vale do Silício.",
+      "Essa leitura me fez rever a forma como penso sobre a minha própria presença digital. Quando usamos gratuitamente um serviço de uma grande plataforma, não somos o cliente — somos o produto. Nossa atenção, nossos padrões de comportamento, nossas relações sociais se tornam matéria-prima de um processo de acumulação que beneficia pouquíssimas empresas.",
+      "A questão da soberania digital emerge desse contexto como urgente. Que tipo de infraestrutura digital um país precisa para escapar dessa dinâmica? Como construir alternativas que coloquem as pessoas no centro, e não o lucro? São perguntas que pretendo continuar explorando aqui ao longo das próximas semanas.",
+    ]
+  },
+  {
+    id: 2,
+    title: "Os desafios da Soberania Digital com a hegemonia da austeridade",
+    date: "19 nov. 2024",
+    tags: ["Política", "IA"],
+    readTime: "6 min",
+    excerpt: "O lançamento da Proposta de Plano Brasileiro de Inteligência Artificial pelo Conselho Nacional de Ciência e Tecnologia em 29 de julho de 2024 marca um momento importante na tentativa de posicionar o Brasil na corrida tecnológica. Embora a iniciativa use termos como \"IA para o Bem de Todos\" e \"soberania nacional\", ela ainda é insuficiente para transformar a realidade brasileira.",
+    body: [
+      "O lançamento da Proposta de Plano Brasileiro de Inteligência Artificial pelo Conselho Nacional de Ciência e Tecnologia em 29 de julho de 2024 marca um momento importante na tentativa de posicionar o Brasil na corrida tecnológica. Embora a iniciativa use termos como \"IA para o Bem de Todos\" e \"soberania nacional\", reconhecendo a necessidade de uma abordagem inclusiva e focada no interesse público, ela ainda é insuficiente para transformar a realidade brasileira.",
+      "O problema central não está na retórica — está na contradição estrutural de tentar construir soberania digital dentro de um paradigma de austeridade fiscal. Investir em pesquisa, em infraestrutura de dados públicos, em formação de profissionais e em regulação robusta exige recursos. E recursos, no contexto de um arcabouço fiscal restritivo, ficam sempre em segundo plano diante das metas de superávit.",
+      "Soberania digital não é apenas ter servidores no Brasil ou regulamentar o uso de IA. É ter a capacidade de definir os próprios parâmetros éticos, técnicos e políticos das tecnologias que organizam a vida social. Isso exige um Estado com capacidade de investimento e com projeto de longo prazo — exatamente o que a hegemonia da austeridade torna impossível.",
+    ]
+  },
+  {
+    id: 3,
+    title: "Eleições municipais e o afastamento dos trabalhadores com a esquerda",
+    date: "21 out. 2024",
+    tags: ["Política", "Movimentos Sociais"],
+    readTime: "7 min",
+    excerpt: "Durante uma viagem de táxi logo após o primeiro turno das eleições municipais de 2024, tive uma conversa sobre política com o motorista. Algo me chamou bastante atenção. Não foi um caso isolado — já havia notado situações semelhantes antes — mas dessa vez ficou mais evidente.",
+    body: [
+      "Durante uma viagem de táxi logo após o primeiro turno das eleições municipais de 2024, tive uma conversa sobre política com o motorista. Algo me chamou bastante atenção. Não foi um caso isolado — já havia notado situações semelhantes antes — mas dessa vez ficou mais evidente. O taxista não era uma pessoa reacionária nem tinha convicções ideológicas de direita, mas votou no Marçal e já decidiu que votará no Ricardo Nunes no segundo turno.",
+      "O que me chamou atenção não foi a escolha em si, mas a razão. Para ele, a esquerda não fala mais para trabalhadores como ele. Fala para uma outra classe — mais educada, mais conectada, mais preocupada com pautas que ele desconhece ou não reconhece como suas. Quando perguntei sobre o que o preocupava, a conversa foi direta: custo de vida, segurança, educação dos filhos, precariedade do trabalho.",
+      "Existe uma crise real de representação. E ela não se resolve apenas denunciando a manipulação midiática ou o bolsonarismo — ela exige que a esquerda encare o fato de que perdeu conexão com parte importante da classe trabalhadora. Não por falta de programa, mas por distância cultural e comunicativa.",
+    ]
+  },
+  {
+    id: 4,
+    title: "O Sonho do Empreendedorismo como Ferramenta para a Precarização no Brasil",
+    date: "5 set. 2024",
+    tags: ["Trabalho", "Política"],
+    readTime: "9 min",
+    excerpt: "O empreendedorismo virou uma palavra de ordem no Brasil. Não apenas no discurso empresarial, mas dentro de movimentos sociais, programas governamentais e até nas periferias — onde o \"ser seu próprio chefe\" emergiu como horizonte de dignidade num contexto de desemprego estrutural e precarização crescente.",
+    body: [
+      "O empreendedorismo virou uma palavra de ordem no Brasil. Não apenas no discurso empresarial, mas dentro de movimentos sociais, programas governamentais e até nas periferias — onde o \"ser seu próprio chefe\" emergiu como horizonte de dignidade num contexto de desemprego estrutural e precarização crescente.",
+      "Mas vale a pena perguntar: empreendedorismo para quem e para quê? Quando uma trabalhadora de aplicativo é chamada de \"empreendedora digital\", o que está sendo feito é uma operação ideológica de inversão — transformar a ausência de direitos trabalhistas em autonomia, a precariedade em liberdade, a ausência de proteção social em mérito individual.",
+      "O problema não é que as pessoas queiram trabalhar por conta própria. O problema é quando o Estado e as grandes corporações promovem o empreendedorismo como alternativa ao emprego formal justamente porque é mais barato — transfere para o trabalhador os riscos que antes eram compartilhados. O resultado é uma massa de trabalhadores sem férias, sem previdência, sem proteção alguma, mas com um certificado de microempreendedor.",
+    ]
+  },
+];
+
+const TAGS = [
+  { name: "Política",          count: 12 },
+  { name: "Tecnologia",        count: 8  },
+  { name: "Trabalho",          count: 7  },
+  { name: "Digital",           count: 6  },
+  { name: "Movimentos Sociais",count: 5  },
+  { name: "IA",                count: 4  },
+];
+
+/* ── Icons ── */
+const IcoSun = () => (
+  <svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="12" y1="2"  x2="12" y2="6"/>
+    <line x1="12" y1="18" x2="12" y2="22"/>
+    <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/>
+    <line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/>
+    <line x1="2"  y1="12" x2="6"  y2="12"/>
+    <line x1="18" y1="12" x2="22" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/>
+    <line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/>
+  </svg>
+);
+const IcoMoon = () => (
+  <svg viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+);
+const IcoChevLeft = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14">
+    <polyline points="15 18 9 12 15 6"/>
+  </svg>
+);
+const IcoUser = () => (
+  <svg viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="4"/>
+    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+  </svg>
+);
+
+/* ── Header ── */
+function SiteHeader({ theme, setTheme, page, go }) {
+  return (
+    <header className="site-header">
+      <button className="wordmark" onClick={() => go('home')}>
+        robsonvnt<span className="wdot">.</span>
+      </button>
+      <nav className="site-nav">
+        <button className={`nav-link${page === 'home'  ? ' is-active' : ''}`} onClick={() => go('home')}>Posts</button>
+        <button className={`nav-link${page === 'tags'  ? ' is-active' : ''}`} onClick={() => go('tags')}>Tags</button>
+        <button className={`nav-link${page === 'about' ? ' is-active' : ''}`} onClick={() => go('about')}>Sobre</button>
+        <button
+          className="theme-btn"
+          onClick={() => setTheme(t => t === 'paper' ? 'ink' : 'paper')}
+          aria-label="Alternar tema"
+        >
+          {theme === 'paper' ? <IcoMoon /> : <IcoSun />}
+        </button>
+      </nav>
+    </header>
+  );
+}
+
+/* ── Home ── */
+function HomePage({ go }) {
+  return (
+    <>
+      <div className="bio-band">
+        <p className="bio-tagline">
+          Explorando a interseção entre tecnologia, trabalho e movimentos sociais —
+          reflexões, experiências e ações para um futuro mais justo.
+        </p>
+      </div>
+      <ul className="post-list">
+        {POSTS.map((p, i) => (
+          <li key={p.id} className="post-item" style={{animationDelay: `${i * 50}ms`}}>
+            <div className="post-meta-row">
+              <span className="post-date">{p.date}</span>
+              {p.tags.map(tag => (
+                <React.Fragment key={tag}>
+                  <span className="meta-sep">·</span>
+                  <button className="tag-eyebrow" onClick={() => go('tags')}>{tag}</button>
+                </React.Fragment>
+              ))}
+            </div>
+            <button className="post-title" onClick={() => go('article', p)}>{p.title}</button>
+            <p className="post-excerpt">{p.excerpt}</p>
+            <button className="read-more" onClick={() => go('article', p)}>
+              Ler mais <span className="rm-arr">→</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+/* ── Article ── */
+function ReadingProgress() {
+  const [pct, setPct] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const d = document.documentElement;
+      const top = d.scrollTop || document.body.scrollTop;
+      const h   = d.scrollHeight - d.clientHeight;
+      setPct(h > 0 ? (top / h) * 100 : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <div className="reading-progress">
+      <div className="reading-progress-fill" style={{width: `${pct}%`}} />
+    </div>
+  );
+}
+
+function ArticlePage({ post, go }) {
+  if (!post) return null;
+  return (
+    <>
+      <ReadingProgress />
+      <button className="back-link" onClick={() => go('home')}>
+        <IcoChevLeft /> Todos os posts
+      </button>
+      <div className="article-header-area">
+        <div className="article-eyebrow">
+          {post.tags.map(tag => (
+            <button key={tag} className="tag-eyebrow" onClick={() => go('tags')}>{tag}</button>
+          ))}
+        </div>
+        <h1 className="article-title">{post.title}</h1>
+        <div className="article-meta-row">
+          <span>{post.date}</span>
+          <span className="meta-sep">·</span>
+          <span>{post.readTime} de leitura</span>
+        </div>
+      </div>
+      <article className="article-body">
+        {post.body.map((para, i) => <p key={i}>{para}</p>)}
+      </article>
+      <div className="original-link-bar">
+        <a href="#" className="original-link">Ler no site original ↗</a>
+      </div>
+    </>
+  );
+}
+
+/* ── Tags ── */
+function TagsPage({ go }) {
+  return (
+    <div className="page-area">
+      <h1 className="page-heading">Tags</h1>
+      <ul className="tag-list">
+        {TAGS.map(t => (
+          <li key={t.name}>
+            <button className="tag-row" onClick={() => go('home')}>
+              <span className="tag-row-name">{t.name}</span>
+              <span className="tag-row-count">{t.count} {t.count === 1 ? 'post' : 'posts'}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ── About ── */
+function AboutPage() {
+  return (
+    <div className="about-area">
+      <div className="about-avatar"><IcoUser /></div>
+      <h1 className="about-name">Robson Ventura Rodrigues</h1>
+      <p className="about-handle">robsonvnt</p>
+      <div className="about-bio">
+        <p>Pesquisador e ativista interessado na interseção entre tecnologia, trabalho e movimentos sociais. Escrevo sobre os impactos do capitalismo digital nas classes trabalhadoras, soberania tecnológica e as contradições do desenvolvimento tecnológico no Brasil e na América Latina.</p>
+        <p>Este espaço é uma tentativa de pensar em voz alta — compartilhar leituras, reflexões e experiências que me parecem relevantes para quem quer entender o mundo sem ser consumido pelos algoritmos.</p>
+      </div>
+      <hr className="about-divider" />
+      <div className="contact-links">
+        <a href="#" className="contact-link">GitHub ↗</a>
+        <a href="#" className="contact-link">LinkedIn ↗</a>
+        <a href="#" className="contact-link">RSS ↗</a>
+      </div>
+    </div>
+  );
+}
+
+/* ── App ── */
+function App() {
+  const [page, setPage]   = useState('home');
+  const [post, setPost]   = useState(null);
+  const [theme, setTheme] = useState(() => localStorage.getItem('rvnt-theme') || 'paper');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('rvnt-theme', theme);
+  }, [theme]);
+
+  const go = (pg, p = null) => {
+    setPage(pg);
+    setPost(p);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  return (
+    <div className="app">
+      <SiteHeader theme={theme} setTheme={setTheme} page={page} go={go} />
+      <main key={page + (post?.id || '')}>
+        {page === 'home'    && <HomePage    go={go} />}
+        {page === 'article' && <ArticlePage post={post} go={go} />}
+        {page === 'tags'    && <TagsPage    go={go} />}
+        {page === 'about'   && <AboutPage />}
+      </main>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

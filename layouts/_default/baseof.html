@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
-    {{- partial "header.html" . -}}
-    <body>
-        <div class="content">
-        {{- partial "head.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- partial "footer.html" . -}}
-        </div>
-    </body>
+<html lang="{{ .Site.Language.Lang }}" data-theme="paper">
+{{- partial "header.html" . -}}
+<body>
+  <div class="app">
+    {{- partial "site-header.html" . -}}
+    <main>
+      {{- block "main" . }}{{- end }}
+    </main>
+  </div>
+  <script src="{{ "js/theme.js" | relURL }}"></script>
+  {{- block "scripts" . }}{{- end -}}
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRGS4T6E9R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FRGS4T6E9R');
+  </script>
+</body>
 </html>

@@ -1,25 +1,15 @@
 {{ define "main" }}
-<h1 class="page-title">All {{ .Name }}</h1>
-
-{{ $biggest := 1 }}
-{{ $smallest := 1 }}
-{{ $max := 3 }}
-{{ $min := 1 }}
-{{ $size := $min }}
-
-{{ $data := .Data }}
-<div class="tag-cloud">
-	<ul class="tags">
-		{{ range $key, $value := .Data.Terms.ByCount }}
-		{{ $size := (add (mul (div $value.Count $biggest) (sub $max $min)) $min) }}
-		{{ $size := (cond (eq $biggest $smallest) $min $size) }}
-		<li>
-			<a style="font-size: {{ $size }}rem;" href="{{ $.Site.LanguagePrefix | absURL }}/{{ $data.Plural }}/{{ $value.Name | urlize }}/">
-				{{ $value.Name }}
-			</a>
-
-		</li>
-		{{ end }}
-	</ul>
+<div class="page-area">
+  <h1 class="page-heading">Tags</h1>
+  <ul class="tag-list">
+    {{ range .Data.Terms.ByCount }}
+    <li>
+      <a class="tag-row" href="{{ .Page.RelPermalink }}">
+        <span class="tag-row-name">{{ .Page.Title }}</span>
+        <span class="tag-row-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
 </div>
 {{ end }}

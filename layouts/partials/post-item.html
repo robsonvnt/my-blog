@@ -1,0 +1,19 @@
+<li class="post-item" style="animation-delay: {{ mul (default 0 .index) 50 }}ms">
+  <div class="post-meta-row">
+    <time class="post-date" datetime="{{ .page.Date.Format "2006-01-02" }}">{{ partial "date-pt.html" .page }}</time>
+    {{ with .page.Params.tags }}
+      {{ range . }}
+        <span class="meta-sep">·</span>
+        <a class="tag-eyebrow" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+    {{ end }}
+    {{ if .page.Draft }}<span class="meta-sep">·</span><span class="draft-label">Rascunho</span>{{ end }}
+  </div>
+  <a class="post-title" href="{{ .page.RelPermalink }}">{{ .page.Title }}</a>
+  <p class="post-excerpt">
+    {{ with .page.Params.description }}{{ . }}{{ else }}{{ .page.Summary | plainify | truncate 320 }}{{ end }}
+  </p>
+  <a class="read-more" href="{{ .page.RelPermalink }}">
+    Ler mais <span class="rm-arr">→</span>
+  </a>
+</li>
