@@ -34,11 +34,16 @@ title = 'Robson Ventura'
     url = "/"
   [[menu.main]]
     weight = 2
+    identifier = "cronicas"
+    name = "Crônicas"
+    url = "/cronicas/"
+  [[menu.main]]
+    weight = 3
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
   [[menu.main]]
-    weight = 3
+    weight = 4
     identifier = "about"
     name = "Sobre"
     url = "/about/"

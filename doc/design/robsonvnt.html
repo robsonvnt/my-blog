@@ -462,10 +462,68 @@
     }
     .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── Series / Crônicas ── */
+    .series-indicator {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--accent);
+      background: none;
+      border: none;
+      padding: 0;
+      margin-bottom: 7px;
+      display: block;
+      text-align: left;
+      font-variation-settings: "opsz" 14;
+      transition: color var(--t-fast);
+    }
+    .series-indicator:hover { color: var(--accent-deep); }
+
+    .series-masthead {
+      padding: 36px 32px 30px;
+      border-bottom: 1px solid var(--rule);
+      animation: fadeUp 0.2s var(--ease-soft);
+    }
+    .series-kicker {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 0 0 14px;
+    }
+    .series-heading {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 13px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      font-variation-settings: "opsz" 34;
+      text-wrap: balance;
+    }
+    .series-description {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 1.55;
+      margin: 0 0 14px;
+      max-width: 480px;
+      font-variation-settings: "opsz" 16;
+    }
+    .series-post-count {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
     /* ── Mobile ── */
     @media (max-width: 600px) {
       .site-header { padding: 13px 20px; }
-      .bio-band, .post-item, .page-area, .article-header-area { padding-left: 20px; padding-right: 20px; }
+      .bio-band, .post-item, .page-area, .article-header-area, .series-masthead { padding-left: 20px; padding-right: 20px; }
       .about-area { padding-left: 20px; padding-right: 20px; }
       .back-link { padding-left: 20px; padding-right: 20px; }
       .article-body, .original-link-bar { padding-left: 20px; padding-right: 20px; }
@@ -486,6 +544,34 @@ const { useState, useEffect } = React;
 
 /* ── DATA ── */
 const POSTS = [
+  {
+    id: 5,
+    title: "O Motorista de Ônibus e o Voto Envergonhado",
+    date: "2 jun. 2026",
+    tags: ["Política", "Movimentos Sociais"],
+    series: "Crônicas de uma República Popular",
+    readTime: "4 min",
+    excerpt: "Na linha 8012, entre o Jabaquara e a Avenida Paulista, ouvi a conversa do banco à frente. Um homem de uns cinquenta anos, colete laranja de obra, falava baixo para o companheiro de assento.",
+    body: [
+      "Na linha 8012, entre o Jabaquara e a Avenida Paulista, ouvi a conversa do banco à frente. Um homem de uns cinquenta anos, colete laranja de obra, falava baixo para o companheiro de assento: \"Votei naquele cara e me arrependo todo dia.\" O outro concordou sem palavras — só um balançar de cabeça, olhos na janela.",
+      "Não era arrependimento filosófico. Era o tipo de vergonha que se carrega no corpo. Ele não votou por ideologia — votou por raiva e esperança misturadas, a combinação mais perigosa da política. E alguém soube transformar essa mistura em urna.",
+      "É sobre esse voto que precisamos falar — não o voto do fascista convicto, mas o do trabalhador que não se reconhece em nenhum projeto e acaba onde o populismo o coloca. A república não vai mudar sem entender esse homem do colete laranja.",
+    ]
+  },
+  {
+    id: 6,
+    title: "A Fila do INSS e a República que não chegou",
+    date: "20 mai. 2026",
+    tags: ["Trabalho", "Política"],
+    series: "Crônicas de uma República Popular",
+    readTime: "5 min",
+    excerpt: "Às sete da manhã de uma quarta-feira, havia quarenta e três pessoas na fila do INSS da Rua Vergueiro. Contei. É o tipo de coisa que você faz quando sabe que vai esperar muito.",
+    body: [
+      "Às sete da manhã de uma quarta-feira, havia quarenta e três pessoas na fila do INSS da Rua Vergueiro. Contei. É o tipo de coisa que você faz quando sabe que vai esperar muito. Idosos com documentos em sacos plásticos. Uma mulher com três crianças. Um homem em cadeira de rodas, sozinho.",
+      "O INSS existe para ser o que a república prometeu: proteção social, renda garantida na velhice e na incapacidade. Na prática, é um campo de batalha burocrático onde trabalhadores tentam provar que trabalharam a vida toda, que estão doentes o suficiente, que merecem o que é deles por direito.",
+      "Não é que o Estado não funcione — é que ele funciona muito bem para quem tem advogado. Para os outros quarenta e dois da fila, o Estado funciona como obstáculo. Essa é a república que não chegou.",
+    ]
+  },
   {
     id: 1,
     title: "Colonialismo Digital",
@@ -590,6 +676,7 @@ function SiteHeader({ theme, setTheme, page, go }) {
       </button>
       <nav className="site-nav">
         <button className={`nav-link${page === 'home'  ? ' is-active' : ''}`} onClick={() => go('home')}>Posts</button>
+        <button className={`nav-link${page === 'cronicas' ? ' is-active' : ''}`} onClick={() => go('cronicas')}>Crônicas</button>
         <button className={`nav-link${page === 'tags'  ? ' is-active' : ''}`} onClick={() => go('tags')}>Tags</button>
         <button className={`nav-link${page === 'about' ? ' is-active' : ''}`} onClick={() => go('about')}>Sobre</button>
         <button
@@ -617,6 +704,9 @@ function HomePage({ go }) {
       <ul className="post-list">
         {POSTS.map((p, i) => (
           <li key={p.id} className="post-item" style={{animationDelay: `${i * 50}ms`}}>
+            {p.series && (
+              <button className="series-indicator" onClick={() => go('cronicas')}>{p.series}</button>
+            )}
             <div className="post-meta-row">
               <span className="post-date">{p.date}</span>
               {p.tags.map(tag => (
@@ -663,10 +753,13 @@ function ArticlePage({ post, go }) {
   return (
     <>
       <ReadingProgress />
-      <button className="back-link" onClick={() => go('home')}>
-        <IcoChevLeft /> Todos os posts
+      <button className="back-link" onClick={() => go(post.series ? 'cronicas' : 'home')}>
+        <IcoChevLeft /> {post.series ? post.series : 'Todos os posts'}
       </button>
       <div className="article-header-area">
+        {post.series && (
+          <button className="series-indicator" style={{marginBottom: '12px'}} onClick={() => go('cronicas')}>{post.series}</button>
+        )}
         <div className="article-eyebrow">
           {post.tags.map(tag => (
             <button key={tag} className="tag-eyebrow" onClick={() => go('tags')}>{tag}</button>
@@ -685,6 +778,50 @@ function ArticlePage({ post, go }) {
       <div className="original-link-bar">
         <a href="#" className="original-link">Ler no site original ↗</a>
       </div>
+    </>
+  );
+}
+
+/* ── Crônicas ── */
+function CronicasPage({ go }) {
+  const cronicas = POSTS.filter(p => p.series === "Crônicas de uma República Popular");
+  return (
+    <>
+      <div className="series-masthead">
+        <p className="series-kicker">Série</p>
+        <h1 className="series-heading">Crônicas de uma<br />República Popular</h1>
+        <p className="series-description">
+          Observações sobre o Brasil a partir de baixo — a política
+          vista do cotidiano, da rua, do trabalho.
+        </p>
+        <p className="series-post-count">{cronicas.length} {cronicas.length === 1 ? 'crônica publicada' : 'crônicas publicadas'}</p>
+      </div>
+      {cronicas.length === 0 ? (
+        <p style={{padding: '32px', color: 'var(--ink-3)', fontSize: '14px', margin: 0, fontFamily: 'var(--font-ui)'}}>
+          Nenhuma crônica publicada ainda.
+        </p>
+      ) : (
+        <ul className="post-list">
+          {cronicas.map((p, i) => (
+            <li key={p.id} className="post-item" style={{animationDelay: `${i * 50}ms`}}>
+              <div className="post-meta-row">
+                <span className="post-date">{p.date}</span>
+                {p.tags.map(tag => (
+                  <React.Fragment key={tag}>
+                    <span className="meta-sep">·</span>
+                    <button className="tag-eyebrow" onClick={() => go('tags')}>{tag}</button>
+                  </React.Fragment>
+                ))}
+              </div>
+              <button className="post-title" onClick={() => go('article', p)}>{p.title}</button>
+              <p className="post-excerpt">{p.excerpt}</p>
+              <button className="read-more" onClick={() => go('article', p)}>
+                Ler mais <span className="rm-arr">→</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
@@ -753,6 +890,7 @@ function App() {
       <main key={page + (post?.id || '')}>
         {page === 'home'    && <HomePage    go={go} />}
         {page === 'article' && <ArticlePage post={post} go={go} />}
+        {page === 'cronicas' && <CronicasPage go={go} />}
         {page === 'tags'    && <TagsPage    go={go} />}
         {page === 'about'   && <AboutPage />}
       </main>

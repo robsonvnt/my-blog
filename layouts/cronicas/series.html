@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $pages := .RegularPages.ByWeight }}
+{{ $published := where $pages "Draft" false }}
+<div class="series-masthead">
+  <p class="series-kicker">Série</p>
+  <h1 class="series-heading">{{ .Title }}</h1>
+  {{ with .Params.description }}
+  <p class="series-description">{{ . }}</p>
+  {{ end }}
+  <p class="series-post-count">
+    {{ len $published }} {{ if eq (len $published) 1 }}crônica publicada{{ else }}crônicas publicadas{{ end }}
+  </p>
+</div>
+{{ if eq (len $pages) 0 }}
+<p class="series-empty">Nenhuma crônica publicada ainda.</p>
+{{ else }}
+<ul class="post-list">
+  {{ range $index, $page := $pages }}
+    {{ partial "post-item.html" (dict "page" $page "index" $index) }}
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

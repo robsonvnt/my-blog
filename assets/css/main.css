@@ -444,7 +444,8 @@ body {
 /* ── About page ── */
 .about-area {
   padding: 40px 32px 80px;
-  max-width: 560px;
+  max-width: 720px;
+  margin: 0 auto;
   animation: fadeUp 0.2s var(--ease-soft);
 }
 .about-avatar {
@@ -456,7 +457,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  margin: 0 auto 18px;
   overflow: hidden;
 }
 .about-avatar img {
@@ -473,12 +474,14 @@ body {
   margin: 0 0 4px;
   letter-spacing: -0.02em;
   font-variation-settings: "opsz" 28;
+  text-align: center;
 }
 .about-handle {
   font-size: 13px;
   color: var(--ink-3);
   font-family: var(--font-ui);
   margin: 0 0 24px;
+  text-align: center;
 }
 .about-bio {
   font-family: var(--font-read);
@@ -602,10 +605,76 @@ pre code {
   border-bottom: 1px solid var(--rule-soft);
 }
 
+/* ── Series / Crônicas ── */
+.series-indicator {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 7px;
+  display: block;
+  text-align: left;
+  font-variation-settings: "opsz" 14;
+  transition: color var(--t-fast);
+  text-decoration: none;
+}
+.series-indicator:hover { color: var(--accent-deep); }
+
+.series-masthead {
+  padding: 36px 32px 30px;
+  border-bottom: 1px solid var(--rule);
+  animation: fadeUp 0.2s var(--ease-soft);
+}
+.series-kicker {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 14px;
+}
+.series-heading {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 13px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-variation-settings: "opsz" 34;
+  text-wrap: balance;
+}
+.series-description {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  max-width: 480px;
+  font-variation-settings: "opsz" 16;
+}
+.series-post-count {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.series-empty {
+  padding: 32px;
+  color: var(--ink-3);
+  font-size: 14px;
+  margin: 0;
+  font-family: var(--font-ui);
+}
+
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .site-header { padding: 13px 20px; }
-  .bio-band, .post-item, .page-area, .article-header-area { padding-left: 20px; padding-right: 20px; }
+  .bio-band, .post-item, .page-area, .article-header-area, .series-masthead { padding-left: 20px; padding-right: 20px; }
   .about-area { padding-left: 20px; padding-right: 20px; }
   .back-link { padding-left: 20px; padding-right: 20px; }
   .article-body, .original-link-bar, .toc, .tldr { padding-left: 20px; padding-right: 20px; }

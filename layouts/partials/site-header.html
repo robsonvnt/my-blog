@@ -4,6 +4,7 @@
   </a>
   <nav class="site-nav" aria-label="Principal">
     <a class="nav-link{{ if .IsHome }} is-active{{ end }}" href="{{ "/" | relLangURL }}">Posts</a>
+    <a class="nav-link{{ if eq .Section "cronicas" }} is-active{{ end }}" href="{{ "/cronicas/" | relLangURL }}">Crônicas</a>
     <a class="nav-link{{ if eq .Section "tags" }} is-active{{ end }}" href="{{ "/tags/" | relLangURL }}">Tags</a>
     <a class="nav-link{{ if eq .Layout "about" }} is-active{{ end }}" href="{{ "/about/" | relLangURL }}">Sobre</a>
     <button type="button" class="theme-btn" id="theme-toggle" aria-label="Alternar tema"></button>

@@ -1,0 +1,62 @@
+{{ define "main" }}
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <a class="back-link" href="{{ .Parent.RelPermalink }}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    {{ .Parent.Title }}
+  </a>
+
+  <div class="article-header-area">
+    <a class="series-indicator" href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+    {{ with .Params.tags }}
+    <div class="article-eyebrow">
+      {{ range . }}
+        <a class="tag-eyebrow" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+    <h1 class="article-title">{{ .Title }}</h1>
+    <div class="article-meta-row">
+      {{ if .Date }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date-pt.html" . }}</time>
+      {{ end }}
+      {{ if gt .ReadingTime 0 }}
+      <span class="meta-sep">·</span>
+      <span>{{ .ReadingTime }} min de leitura</span>
+      {{ end }}
+      {{ if .Draft }}
+      <span class="meta-sep">·</span>
+      <span class="draft-label">Rascunho</span>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ if isset .Params "tldr" }}
+  <div class="tldr">
+    <strong>tl;dr:</strong> {{ .Params.tldr }}
+  </div>
+  {{ end }}
+
+  {{ if isset .Params "toc" }}
+  <div class="toc">
+    <strong>Sumário</strong>
+    {{ .TableOfContents }}
+  </div>
+  {{ end }}
+
+  <article class="article-body">
+    {{ .Content }}
+  </article>
+
+  {{ with .Params.originalUrl }}
+  <div class="original-link-bar">
+    <a class="original-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">Ler no site original ↗</a>
+  </div>
+  {{ end }}
+{{ end }}
+
+{{ define "scripts" }}
+<script src="{{ "js/reading-progress.js" | relURL }}"></script>
+{{ end }}
